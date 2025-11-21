@@ -1,0 +1,9 @@
+baseURL = "https://freebook-review.com/"
+languageCode = "en-us"
+title = "Free Book Review"
+theme = "FixIt"
+
+[pagination]
+pagerSize = 10
+
+enableRobotsTXT = true
