@@ -3,7 +3,13 @@ languageCode = "en-us"
 title = "Free Book Review"
 theme = "FixIt"
 
+enableRobotsTXT = true
+
 [pagination]
 pagerSize = 10
 
-enableRobotsTXT = true
+[taxonomies]
+category = "categories"
+tag      = "tags"
+
+buildFuture = true

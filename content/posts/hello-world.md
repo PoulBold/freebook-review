@@ -1,6 +1,6 @@
 ---
 title: "Why Every New Book Needs Social Proof Before Sales Can Begin"
-date: 2025-11-22T00:00:00Z
+date: 2025-11-10T00:00:00Z
 draft: false
 categories: ["publishing", "marketing"]
 tags: ["amazon", "book-reviews", "kdp"]
