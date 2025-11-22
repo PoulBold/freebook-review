@@ -1,7 +1,7 @@
 baseURL = "https://freebook-review.com/"
 languageCode = "en-us"
 title = "Free Book Review"
-theme = "FixIt"
+theme = "Octo"
 
 enableRobotsTXT = true
 
