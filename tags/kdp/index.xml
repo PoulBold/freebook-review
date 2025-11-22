@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>All Posts - Free Book Review</title>
-    <link>http://localhost:1313/posts/</link>
+    <title>Kdp - Tag - Free Book Review</title>
+    <link>http://localhost:1313/tags/kdp/</link>
     <description>Free Book Review</description>
     <generator>Hugo 0.152.2 &amp; FixIt v0.4.0-alpha.3-20251121172518-6f99565f</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 10 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/kdp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why Every New Book Needs Social Proof Before Sales Can Begin</title>
       <link>http://localhost:1313/posts/hello-world/</link>
