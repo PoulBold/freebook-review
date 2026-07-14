@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "build": "hugo --gc --minify",
+    "server": "hugo server --disableFastRender"
+  },
+  "devDependencies": {
+    "hugo-extended": "^0.164.0",
+    "bootstrap": "^5.3.8",
+    "bootstrap-print-css": "^1.0.1",
+    "fuse.js": "^7.4.2",
+    "dompurify": "^3.4.11"
+  }
+}
