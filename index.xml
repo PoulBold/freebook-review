@@ -1,132 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Free Book Review</title><link>https://freebook-review.com/</link><description>Recent content on Free Book Review</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 15 Jul 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://freebook-review.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Amazon Review Rules Are Getting Stricter: What Authors Should Do Now</title><link>https://freebook-review.com/blog/amazon-review-rules-are-getting-stricter/</link><pubDate>Wed, 15 Jul 2026 00:00:00 +0000</pubDate><guid>https://freebook-review.com/blog/amazon-review-rules-are-getting-stricter/</guid><description>&lt;p&gt;Amazon has been tightening its approach to customer reviews, and for authors this is more than a small platform update. Reviews still help readers decide whether a book is worth their time, but the way those reviews are earned now matters more than ever.&lt;/p&gt;
-&lt;p&gt;The safest path is simple: build review momentum without pressure, payment, or manipulation.&lt;/p&gt;
-&lt;h2 id="why-amazon-is-being-more-careful"&gt;Why Amazon Is Being More Careful&lt;/h2&gt;
-&lt;p&gt;Fake and incentivized reviews have become a larger problem across online marketplaces. Amazon is under pressure to protect reader trust, remove suspicious patterns, and make review activity harder to game. That means author behavior that once felt harmless can now create risk.&lt;/p&gt;</description></item><item><title>Why Every New Book Needs Social Proof Before Sales Can Begin</title><link>https://freebook-review.com/blog/social-proof-before-sales/</link><pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate><guid>https://freebook-review.com/blog/social-proof-before-sales/</guid><description>&lt;p&gt;When authors prepare to launch a new book, they often focus on the elements they can directly control: the writing, the editing, the cover, the subtitle, the blurb, the keywords. These are important, of course — foundational, even. But there is one factor that determines the fate of a book on Amazon long before the first sale comes in:&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;social proof.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Social proof is more than reviews.&lt;br&gt;
-It is the collective signal that tells strangers, “Others have already walked this path. You’re safe to follow.”&lt;/p&gt;</description></item><item><title>Why Every New Book Needs Social Proof Before Sales Can Begin</title><link>https://freebook-review.com/posts/hello-world/</link><pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate><guid>https://freebook-review.com/posts/hello-world/</guid><description>&lt;p&gt;When authors prepare to launch a new book, they often focus on the elements they can directly control: the writing, the editing, the cover, the subtitle, the blurb, the keywords. These are important, of course — foundational, even. But there is one factor that determines the fate of a book on Amazon long before the first sale comes in:&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;social proof.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Social proof is more than reviews.&lt;br&gt;
-It is the collective signal that tells strangers, “Others have already walked this path. You’re safe to follow.”&lt;/p&gt;</description></item><item><title>Home</title><link>https://freebook-review.com/home/home/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://freebook-review.com/home/home/</guid><description>&lt;section id="showcase" class="rad-showcase rad-showcase--index rad-animation-group rad-fade-down"&gt;
- &lt;div&gt;
- 
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Free Book Review</title>
+		<link>https://freebook-review.com/</link>
+		<description>Recent content on Free Book Review</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 15 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://freebook-review.com/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Amazon Review Rules Are Getting Stricter: What Authors Should Do Now</title>
+				<link>https://freebook-review.com/posts/amazon-review-rules-are-getting-stricter/</link>
+				<pubDate>Wed, 15 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>https://freebook-review.com/posts/amazon-review-rules-are-getting-stricter/</guid>
+				<description>&lt;p&gt;Amazon has been tightening its approach to customer reviews, and for authors this is more than a small platform update. Reviews still help readers decide whether a book is worth their time, but the way those reviews are earned now matters more than ever.&lt;/p&gt;&#xA;&lt;p&gt;The safest path is simple: build review momentum without pressure, payment, or manipulation.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-amazon-is-being-more-careful&#34;&gt;Why Amazon Is Being More Careful&lt;/h2&gt;&#xA;&lt;p&gt;Fake and incentivized reviews have become a larger problem across online marketplaces. Amazon is under pressure to protect reader trust, remove suspicious patterns, and make review activity harder to game. That means author behavior that once felt harmless can now create risk.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Why Every New Book Needs Social Proof Before Sales Can Begin</title>
+				<link>https://freebook-review.com/posts/hello-world/</link>
+				<pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+				<guid>https://freebook-review.com/posts/hello-world/</guid>
+				<description>&lt;p&gt;When authors prepare to launch a new book, they often focus on the elements they can directly control: the writing, the editing, the cover, the subtitle, the blurb, the keywords. These are important, of course вЂ” foundational, even. But there is one factor that determines the fate of a book on Amazon long before the first sale comes in:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;social proof.&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Social proof is more than reviews.&lt;br&gt;&#xA;It is the collective signal that tells strangers, вЂњOthers have already walked this path. YouвЂ™re safe to follow.вЂќ&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
 
- &lt;div class="showcase-section row flex-column-reverse flex-md-row rad-fade-down rad-waiting rad-animate"&gt;
- &lt;div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"&gt;
- &lt;h1 class="display-1"&gt;
- Free Book Review
- &lt;/h1&gt;
- &lt;h2 class="display-5"&gt;
- &lt;span&gt;Ethical Amazon review guidance for authors&lt;/span&gt;
- &lt;/h2&gt;
- &lt;div class="lead"&gt;
- Clear, practical notes on book reviews, launch trust, and the safer ways authors can build social proof without putting their Amazon presence at risk.
- &lt;/div&gt;
- 
- &lt;a
- href="https://freebook-review.com/blog/"
- class="btn btn-primary"
- &gt;
- &lt;i class="icon-book-open"&gt;&lt;/i&gt;
- Read the blog
- &lt;/a&gt;
- 
- &lt;/div&gt;
- &lt;div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 profile-image"&gt;
- 
-
-
-
-
-
-
-
-
-
-
- 
- 
-
-
-
- 
- 
-
-
- &lt;picture class=""&gt;
- 
- 
-
- &lt;source srcset="https://freebook-review.com/images/showcase/showcase@2x_hu_db9f5bf83e789baf.webp 1x, https://freebook-review.com/images/showcase/showcase@2x_hu_422c1e59cfd056e6.webp 2x" type="image/webp" /&gt;
- &lt;source srcset="https://freebook-review.com/images/showcase/showcase@2x_hu_ebf422f89b04bf8a.png 1x, https://freebook-review.com/images/showcase/showcase@2x_hu_942c5fc57bb9b7aa.png 2x" type="image/png"&gt;
-
- &lt;img
- width="711"
- height="691"
- class="lozad img-responsive "
- data-src="https://freebook-review.com/images/showcase/showcase@2x_hu_ebf422f89b04bf8a.png"
- alt=''
- src="data:image/gif;base64,R0lGODlhBwACAIAAAP///wAAACH5BAEAAAEALAAAAAAHAAIAAAIDjI9YADs="
- loading="lazy"
- decoding="async"
- /&gt;
- &lt;/picture&gt;
-
-
-
-
- &lt;/div&gt;
- &lt;div class="col-12 inner-content"&gt;
- 
-
- &lt;/div&gt;
- 
-
- &lt;/div&gt;
-
-
- &lt;div class="row platform-links"&gt;
- &lt;div class="col-12"&gt;&lt;/div&gt;
- &lt;/div&gt;
- &lt;/div&gt;
- 
-&lt;/section&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
- 
-
-
-
- 
- 
-
-
-&lt;section class="section section--border-bottom rad-animation-group section--padding"&gt;
- &lt;div class="container d-flex justify-content-center align-items-center"&gt;
- &lt;div class="row rad-fade-down"&gt;
- &lt;div class="col-12 text-center"&gt;
- 
- &lt;h2 class="section__title"&gt;Build trust without shortcuts&lt;/h2&gt;
- 
- 
- &lt;div class="text-section__content"&gt;
- Free Book Review is focused on one thing: helping authors understand how reader feedback, Amazon review policies, and launch momentum fit together. The goal is not louder marketing. The goal is cleaner trust.
- &lt;/div&gt;
- &lt;/div&gt;
- &lt;/div&gt;
- &lt;/div&gt;
-&lt;/section&gt;</description></item></channel></rss>

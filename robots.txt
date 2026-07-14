@@ -1,3 +1,2 @@
 User-agent: *
-Disallow:
-Sitemap: https://freebook-review.com/sitemap.xml
+
