@@ -4,12 +4,90 @@ title = "Free Book Review"
 theme = "Octo"
 
 enableRobotsTXT = true
+buildFuture = true
 
 [pagination]
-pagerSize = 10
+pagerSize = 8
 
 [taxonomies]
 category = "categories"
 tag      = "tags"
 
-buildFuture = true
+[markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+  [markup.highlight]
+    style = "solarized-dark"
+
+[params]
+  author = "Free Book Review"
+  subtitle = "Honest review strategy for authors"
+  description = "Practical notes for authors on Amazon reviews, book launches, and ethical social proof."
+  defaultKeywords = ["amazon reviews", "book reviews", "kdp", "publishing", "author marketing"]
+  truncate = true
+  compactIndex = false
+  mainSections = ["posts"]
+  continueReadingText = "Read the full note &rarr;"
+  rss = true
+  textrss = false
+  navigationNewWindow = false
+  sidebarRecentLimit = 5
+  sidebarHeader = "For Authors"
+  sidebarText = "Practical notes on Amazon reviews, KDP launches, reader trust, and ethical social proof. No shortcuts, no fake review games."
+  sidebarMenuEnabled = true
+  sidebarMenuHeader = "Explore"
+  sidebarNewWindow = false
+  searchEngineURL = "https://www.google.com/search"
+  generateTaxonomyList = true
+  sortTaxonomyAlphabetical = true
+  disableReadingTime = false
+  remoteFonts = false
+  fontAwesome = false
+  customCSS = ["css/freebook-octo.css"]
+  notFoundHeader = "Page not found"
+  notFoundText = "The page may have moved during a site update. Use the menu, tags, or recent posts to keep reading."
+  twitterCardEnabled = true
+  twitterCardDomain = "freebook-review.com"
+  twitterCardSite = "freebookreview"
+  twitterCardAuthor = "freebookreview"
+
+[[menu.main]]
+  Name = "Home"
+  URL = "/"
+  weight = 1
+
+[[menu.main]]
+  Name = "Posts"
+  URL = "/posts/"
+  weight = 2
+
+[[menu.main]]
+  Name = "Amazon"
+  URL = "/tags/amazon/"
+  weight = 3
+
+[[menu.main]]
+  Name = "Book Reviews"
+  URL = "/tags/book-reviews/"
+  weight = 4
+
+[[menu.sidebar]]
+  Name = "Amazon Reviews"
+  URL = "/tags/amazon/"
+  weight = 1
+
+[[menu.sidebar]]
+  Name = "Book Reviews"
+  URL = "/tags/book-reviews/"
+  weight = 2
+
+[[menu.sidebar]]
+  Name = "KDP"
+  URL = "/tags/kdp/"
+  weight = 3
+
+[[menu.sidebar]]
+  Name = "Publishing"
+  URL = "/categories/publishing/"
+  weight = 4

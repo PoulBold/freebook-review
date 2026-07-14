@@ -1,0 +1,28 @@
+    <footer role="contentinfo">
+      <p>Free Book Review is supported by <a href="https://publishing-expert.com/" target="_blank" rel="noopener noreferrer">Publishing Expert</a>.</p>
+    </footer>
+
+    {{- /* Add extend_footer.html */ -}}
+    {{ partial "extend_footer.html" . }}
+
+    {{- /* Piwik */ -}}
+    {{ with .Site.Params.analytics.piwik.ID }}
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u="//{{ $.Site.Params.analytics.piwik.URL }}/";
+          _paq.push(['setTrackerUrl', u+'piwik.php']);
+          _paq.push(['setSiteId', {{ . }}]);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+    {{ end }}
+
+    {{ template "_internal/google_analytics.html" . }}
+    {{ partial "goatcounter.html" . }}
+  </body>
+</html>
