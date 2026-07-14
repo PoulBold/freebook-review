@@ -13,6 +13,12 @@ body > header[role="banner"] h1 {
   max-width: none;
 }
 
+@media only screen and (min-width: 900px) {
+  body > header[role="banner"] h1 {
+    font-size: 4.6em;
+  }
+}
+
 body > header[role="banner"] h1 a,
 body > header[role="banner"] h1 a:visited {
   color: #f4fbf7;
