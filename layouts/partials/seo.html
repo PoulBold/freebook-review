@@ -1,16 +1,25 @@
 {{- $siteTitle := .Site.Title -}}
-{{- $title := cond .IsHome $siteTitle (printf "%s | %s" .Title $siteTitle) -}}
-{{- $description := "" -}}
+{{- $cleanTitle := .Title | plainify | htmlUnescape | replaceRE "[-_]+" " " -}}
+{{- $displayTitle := cond .IsHome $siteTitle (printf "%s | %s" $cleanTitle $siteTitle) -}}
+{{- $canonical := .Permalink -}}
+{{- $defaultDescription := .Site.Params.description -}}
+{{- $description := $defaultDescription -}}
 {{- if .IsHome -}}
-  {{- $description = .Site.Params.description -}}
+  {{- $description = $defaultDescription -}}
 {{- else if .Description -}}
-  {{- $description = .Description -}}
-{{- else if .Summary -}}
-  {{- $description = .Summary | plainify | htmlUnescape | truncate 160 -}}
-{{- else -}}
-  {{- $description = .Site.Params.description -}}
+  {{- $description = .Description | plainify | htmlUnescape -}}
+{{- else if .IsPage -}}
+  {{- $description = .Summary | plainify | htmlUnescape | truncate 158 -}}
+{{- else if eq .Kind "section" -}}
+  {{- $description = printf "Read practical Free Book Review articles about Amazon reviews, KDP launches, reader trust, and ethical book marketing." -}}
+{{- else if eq .Kind "term" -}}
+  {{- $description = printf "Articles about %s for authors building honest Amazon reviews, reader trust, and safer book launch momentum." $cleanTitle -}}
+{{- else if eq .Kind "taxonomy" -}}
+  {{- $description = "Browse Free Book Review topics for practical guidance on Amazon reviews, KDP, book launches, and ethical author marketing." -}}
 {{- end -}}
 {{- $description = replace $description "…" "..." -}}
+{{- $description = replace $description "вЂ¦" "..." -}}
+{{- $description = truncate 158 $description -}}
 {{- $keywords := slice -}}
 {{- with .Keywords -}}
   {{- $keywords = . -}}
@@ -19,22 +28,30 @@
 {{- else -}}
   {{- $keywords = .Site.Params.defaultKeywords -}}
 {{- end -}}
-{{- $type := cond .IsPage "article" "website" -}}
-{{- $canonical := .Permalink -}}
+{{- $ogImage := "og-image.png" | absURL -}}
+{{- $logo := "logo-512.png" | absURL -}}
+{{- $schemaOrg := dict "@type" "Organization" "@id" (printf "%s#organization" .Site.BaseURL) "name" $siteTitle "url" .Site.BaseURL "logo" (dict "@type" "ImageObject" "url" $logo "width" 512 "height" 512) -}}
+{{- $schemaWebPage := dict "@type" "WebPage" "@id" (printf "%s#webpage" $canonical) "url" $canonical "name" $displayTitle "description" $description "isPartOf" (dict "@id" (printf "%s#website" .Site.BaseURL)) "inLanguage" .Site.LanguageCode -}}
 
-<title>{{ $title }}</title>
+<title>{{ $displayTitle }}</title>
 <link rel="canonical" href="{{ $canonical }}">
 <meta name="description" content="{{ $description }}">
 <meta name="keywords" content="{{ delimit $keywords ", " }}">
 <meta name="author" content="{{ .Site.Params.author }}">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large">
 
-<meta property="og:type" content="{{ $type }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:site_name" content="{{ $siteTitle }}">
-<meta property="og:title" content="{{ $title }}">
+<meta property="og:title" content="{{ $displayTitle }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ $canonical }}">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:image:secure_url" content="{{ $ogImage }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Free Book Review - honest review strategy for authors">
 {{- if .IsPage }}
 <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
 <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
@@ -50,47 +67,28 @@
 {{- end }}
 {{- end }}
 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $displayTitle }}">
 <meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+<meta name="twitter:image:alt" content="Free Book Review - honest review strategy for authors">
 {{ with .Site.Params.twitterCardSite }}<meta name="twitter:site" content="@{{ . }}">{{ end }}
 {{ with .Site.Params.twitterCardAuthor }}<meta name="twitter:creator" content="@{{ . }}">{{ end }}
 {{ with .Site.Params.twitterCardDomain }}<meta name="twitter:domain" content="{{ . }}">{{ end }}
 
-{{- $publisher := dict "@type" "Organization" "name" $siteTitle "url" .Site.BaseURL -}}
+{{- $graph := slice $schemaOrg $schemaWebPage -}}
+{{- if .IsHome -}}
+  {{- $schemaWebSite := dict "@type" "WebSite" "@id" (printf "%s#website" .Site.BaseURL) "name" $siteTitle "url" .Site.BaseURL "description" $description "publisher" (dict "@id" (printf "%s#organization" .Site.BaseURL)) "inLanguage" .Site.LanguageCode "potentialAction" (dict "@type" "SearchAction" "target" (printf "%s?q=site:%s%%20{search_term_string}" .Site.Params.searchEngineURL .Site.BaseURL) "query-input" "required name=search_term_string") -}}
+  {{- $graph = $graph | append $schemaWebSite -}}
+{{- end -}}
 {{- if .IsPage -}}
-  {{- $json := dict
-    "@context" "https://schema.org"
-    "@type" "BlogPosting"
-    "headline" .Title
-    "description" $description
-    "url" $canonical
-    "mainEntityOfPage" (dict "@type" "WebPage" "@id" $canonical)
-    "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
-    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
-    "author" $publisher
-    "publisher" $publisher
-    "keywords" $keywords
-  -}}
-<script type="application/ld+json">{{ $json | jsonify | safeJS }}</script>
-{{- else -}}
-  {{- $json := dict
-    "@context" "https://schema.org"
-    "@type" "WebSite"
-    "name" $siteTitle
-    "url" .Site.BaseURL
-    "description" $description
-    "publisher" $publisher
-    "potentialAction" (dict "@type" "SearchAction" "target" (printf "%s?q=site:%s%%20{search_term_string}" .Site.Params.searchEngineURL .Site.BaseURL) "query-input" "required name=search_term_string")
-  -}}
-<script type="application/ld+json">{{ $json | jsonify | safeJS }}</script>
+  {{- $schemaArticle := dict "@type" "BlogPosting" "@id" (printf "%s#article" $canonical) "headline" .Title "description" $description "url" $canonical "mainEntityOfPage" (dict "@id" (printf "%s#webpage" $canonical)) "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00") "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00") "author" (dict "@id" (printf "%s#organization" .Site.BaseURL)) "publisher" (dict "@id" (printf "%s#organization" .Site.BaseURL)) "image" (dict "@type" "ImageObject" "url" $ogImage "width" 1200 "height" 630) "keywords" $keywords "inLanguage" .Site.LanguageCode -}}
+  {{- $graph = $graph | append $schemaArticle -}}
 {{- end -}}
-
 {{- if not .IsHome -}}
-  {{- $items := slice
-    (dict "@type" "ListItem" "position" 1 "name" "Home" "item" .Site.BaseURL)
-    (dict "@type" "ListItem" "position" 2 "name" .Title "item" $canonical)
-  -}}
-  {{- $breadcrumb := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $items -}}
-<script type="application/ld+json">{{ $breadcrumb | jsonify | safeJS }}</script>
+  {{- $items := slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" .Site.BaseURL) (dict "@type" "ListItem" "position" 2 "name" $cleanTitle "item" $canonical) -}}
+  {{- $schemaBreadcrumb := dict "@type" "BreadcrumbList" "@id" (printf "%s#breadcrumb" $canonical) "itemListElement" $items -}}
+  {{- $graph = $graph | append $schemaBreadcrumb -}}
 {{- end -}}
+{{- $json := dict "@context" "https://schema.org" "@graph" $graph -}}
+<script type="application/ld+json">{{ $json | jsonify | safeJS }}</script>
