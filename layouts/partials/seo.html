@@ -1,0 +1,96 @@
+{{- $siteTitle := .Site.Title -}}
+{{- $title := cond .IsHome $siteTitle (printf "%s | %s" .Title $siteTitle) -}}
+{{- $description := "" -}}
+{{- if .IsHome -}}
+  {{- $description = .Site.Params.description -}}
+{{- else if .Description -}}
+  {{- $description = .Description -}}
+{{- else if .Summary -}}
+  {{- $description = .Summary | plainify | htmlUnescape | truncate 160 -}}
+{{- else -}}
+  {{- $description = .Site.Params.description -}}
+{{- end -}}
+{{- $description = replace $description "…" "..." -}}
+{{- $keywords := slice -}}
+{{- with .Keywords -}}
+  {{- $keywords = . -}}
+{{- else with .Params.tags -}}
+  {{- $keywords = . -}}
+{{- else -}}
+  {{- $keywords = .Site.Params.defaultKeywords -}}
+{{- end -}}
+{{- $type := cond .IsPage "article" "website" -}}
+{{- $canonical := .Permalink -}}
+
+<title>{{ $title }}</title>
+<link rel="canonical" href="{{ $canonical }}">
+<meta name="description" content="{{ $description }}">
+<meta name="keywords" content="{{ delimit $keywords ", " }}">
+<meta name="author" content="{{ .Site.Params.author }}">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="{{ $type }}">
+<meta property="og:site_name" content="{{ $siteTitle }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ $canonical }}">
+<meta property="og:locale" content="en_US">
+{{- if .IsPage }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- with .Params.categories }}
+{{- range . }}
+<meta property="article:section" content="{{ . }}">
+{{- end }}
+{{- end }}
+{{- with .Params.tags }}
+{{- range . }}
+<meta property="article:tag" content="{{ . }}">
+{{- end }}
+{{- end }}
+{{- end }}
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+{{ with .Site.Params.twitterCardSite }}<meta name="twitter:site" content="@{{ . }}">{{ end }}
+{{ with .Site.Params.twitterCardAuthor }}<meta name="twitter:creator" content="@{{ . }}">{{ end }}
+{{ with .Site.Params.twitterCardDomain }}<meta name="twitter:domain" content="{{ . }}">{{ end }}
+
+{{- $publisher := dict "@type" "Organization" "name" $siteTitle "url" .Site.BaseURL -}}
+{{- if .IsPage -}}
+  {{- $json := dict
+    "@context" "https://schema.org"
+    "@type" "BlogPosting"
+    "headline" .Title
+    "description" $description
+    "url" $canonical
+    "mainEntityOfPage" (dict "@type" "WebPage" "@id" $canonical)
+    "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+    "author" $publisher
+    "publisher" $publisher
+    "keywords" $keywords
+  -}}
+<script type="application/ld+json">{{ $json | jsonify | safeJS }}</script>
+{{- else -}}
+  {{- $json := dict
+    "@context" "https://schema.org"
+    "@type" "WebSite"
+    "name" $siteTitle
+    "url" .Site.BaseURL
+    "description" $description
+    "publisher" $publisher
+    "potentialAction" (dict "@type" "SearchAction" "target" (printf "%s?q=site:%s%%20{search_term_string}" .Site.Params.searchEngineURL .Site.BaseURL) "query-input" "required name=search_term_string")
+  -}}
+<script type="application/ld+json">{{ $json | jsonify | safeJS }}</script>
+{{- end -}}
+
+{{- if not .IsHome -}}
+  {{- $items := slice
+    (dict "@type" "ListItem" "position" 1 "name" "Home" "item" .Site.BaseURL)
+    (dict "@type" "ListItem" "position" 2 "name" .Title "item" $canonical)
+  -}}
+  {{- $breadcrumb := dict "@context" "https://schema.org" "@type" "BreadcrumbList" "itemListElement" $items -}}
+<script type="application/ld+json">{{ $breadcrumb | jsonify | safeJS }}</script>
+{{- end -}}

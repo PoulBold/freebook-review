@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{ .Site.LanguageCode }}" lang="{{ .Site.LanguageCode }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  {{ if not .Site.Params.disableGoogleFonts }}
+    {{ if not .Site.Params.remoteFonts }}
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    {{ else }}
+      <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+      <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    {{ end }}
+  {{ end }}
+
+  {{ partial "seo.html" . }}
+
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+  {{ range .Site.Params.customCSS }}
+    <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}">
+  {{ end }}
+
+  {{ if not .Site.Params.fontAwesome }}
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  {{ else }}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  {{ end }}
+
+  <link rel="icon" href="{{ "/favicon.ico" | absURL }}" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "/favicon-32x32.png" | absURL }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ "/favicon-16x16.png" | absURL }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "/apple-touch-icon.png" | absURL }}">
+  <link rel="manifest" href="{{ "/site.webmanifest" | absURL }}">
+
+  {{ with .OutputFormats.Get "RSS" }}<link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}">{{ end }}
+  {{ hugo.Generator }}
+  {{ partial "extend_header.html" . }}
+</head>
+<body>
+
+<header role="banner">{{ partial "octo_header.html" . }}</header>
+<nav role="navigation">{{ partial "navigation.html" . }}</nav>
